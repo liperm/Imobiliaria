@@ -1,9 +1,9 @@
-import * as livroResource from '@/modules/livro/livro.resource';
+import * as imovelResource from '@/modules/imovel/imovel.resource';
 
-export function fetchLivros() {
+export function fetchImoveis() {
   return new Promise((resolve, reject) =>
-    livroResource
-      .fetchLivros()
+    imovelResource
+      .fetchImoveis()
       .then(({ data }) => {
         resolve({
           data,
@@ -12,10 +12,10 @@ export function fetchLivros() {
       .catch(err => reject(err)));
 }
 
-export function getLivro(livroId) {
+export function getImovel(imovelId) {
   return new Promise((resolve, reject) =>
-    livroResource
-      .getLivro(livroId)
+    imovelResource
+      .getImovel(imovelId)
       .then(({ data }) => {
         if (!data) {
           reject(new Error('not_found'));
@@ -25,18 +25,18 @@ export function getLivro(livroId) {
       .catch(err => reject(err)));
 }
 
-export function saveLivro(livro) {
+export function saveImovel(imovel) {
   const errors = null;
   return new Promise((resolve, reject) =>
-    (errors ? reject(errors) : getLivroSaveAction(livro)(livro)
+    (errors ? reject(errors) : getImovelSaveAction(imovel)(imovel)
       .then(({ data }) => resolve(data))
       .catch(err => reject(err))));
 }
 
-export function removeLivro(livro) {
+export function removeImovel(imovel) {
   return new Promise((resolve, reject) =>
-    livroResource
-      .removeLivro(livro.id)
+    imovelResource
+      .removeImovel(imovel.id)
       .then(() => {
         resolve();
       })
@@ -45,6 +45,6 @@ export function removeLivro(livro) {
       }));
 }
 
-function getLivroSaveAction(livro) {
-  return livro.id ? livroResource.updateLivro : livroResource.createLivro;
+function getImovelSaveAction(imovel) {
+  return imovel.id ? imovelResource.updateImovel : imovelResource.createImovel;
 }

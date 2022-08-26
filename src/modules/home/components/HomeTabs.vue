@@ -13,17 +13,17 @@
         <biblioteca-p class="opacity--50 my--md">( Sem Empréstimos )</biblioteca-p>
       </div>
     </el-tab-pane>
-    <el-tab-pane label="Últimos livros" name="livros">
-      <div v-if="livroList.length">
+    <el-tab-pane label="Últimos imovels" name="imovels">
+      <div v-if="imovelList.length">
         <div
-          v-for="livro in livroList"
-          :key="livro.id"
+          v-for="imovel in imovelList"
+          :key="imovel.id"
           class="mb--xl">
-          <biblioteca-livro-card :livro="livro" />
+          <biblioteca-imovel-card :imovel="imovel" />
         </div>
       </div>
       <div v-else>
-        <biblioteca-p class="opacity--50 my--md">( Sem livros )</biblioteca-p>
+        <biblioteca-p class="opacity--50 my--md">( Sem imovels )</biblioteca-p>
       </div>
     </el-tab-pane>
     <el-tab-pane label="Últimos usuários" name="usuarios">
@@ -43,25 +43,25 @@
 </template>
 
 <script>
-import { fetchLivros } from '@/modules/livro/livro.service';
+import { fetchImovels } from '@/modules/imovel/imovel.service';
 import { fetchUsuarios } from '@/modules/usuario/usuario.service';
 import { fetchEmprestimos } from '@/modules/emprestimo/emprestimo.service';
 
-import BibliotecaLivroCard from '@/modules/livro/components/LivroCard.vue';
+import BibliotecaImovelCard from '@/modules/imovel/components/ImovelCard.vue';
 import BibliotecaUsuarioCard from '@/modules/usuario/components/UsuarioCard.vue';
 import BibliotecaEmprestimoCard from '@/modules/emprestimo/components/EmprestimoCard.vue';
 
 export default {
   name: 'BibliotecaHomeTabs',
   components: {
-    BibliotecaLivroCard,
+    BibliotecaImovelCard,
     BibliotecaUsuarioCard,
     BibliotecaEmprestimoCard,
   },
   data() {
     return {
       tabActive: 'emprestimos',
-      livroList: [],
+      imovelList: [],
       usuarioList: [],
       emprestimoList: [],
     };
@@ -73,19 +73,19 @@ export default {
     fetch() {
       if (this.tabActive === 'emprestimos') {
         this.fetchEmprestimos();
-      } else if (this.tabActive === 'livros') {
-        this.fetchLivros();
+      } else if (this.tabActive === 'imovels') {
+        this.fetchImovels();
       } else if (this.tabActive === 'usuarios') {
         this.fetchUsuarios();
       }
     },
-    fetchLivros() {
-      fetchLivros()
+    fetchImovels() {
+      fetchImovels()
         .then(data => {
-          this.livroList = data.data;
+          this.imovelList = data.data;
         })
         .catch(() => {
-          this.livroList = [];
+          this.imovelList = [];
         });
     },
     fetchUsuarios() {
