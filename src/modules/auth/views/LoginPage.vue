@@ -1,17 +1,17 @@
 <template>
-  <biblioteca-container class="d-flex justify-content-center align-items-center h-100 py--xl">
-    <biblioteca-form v-slot="{ validate }" :submit="submitLogin">
+  <imobiliaria-container class="d-flex justify-content-center align-items-center h-100 py--xl">
+    <imobiliaria-form v-slot="{ validate }" :submit="submitLogin">
       <div class="text-center mb-3">
         <img
           class="mb-2"
           src="@/assets/images/logo.png"
           alt=""
           width="80" />
-        <biblioteca-header size="md">Biblioteca</biblioteca-header>
+        <imobiliaria-header size="md">Imobiliaria</imobiliaria-header>
         <small>Entrar</small>
       </div>
       <div class="mb-3">
-        <biblioteca-input
+        <imobiliaria-input
           v-model="username"
           type="email"
           name="e-mail"
@@ -20,7 +20,7 @@
           :focus="true" />
       </div>
       <div class="mb-3">
-        <biblioteca-input
+        <imobiliaria-input
           v-model="password"
           name="senha"
           type="password"
@@ -28,12 +28,12 @@
           placeholder="Senha" />
       </div>
       <div class="d-grid mb-3">
-        <biblioteca-button
+        <imobiliaria-button
           class="btn btn-primary"
           native-type="submit"
           @click="validate">
           Entrar
-        </biblioteca-button>
+        </imobiliaria-button>
       </div>
       <div class="d-grid text-center">
         <p>
@@ -41,8 +41,8 @@
           <router-link class="color--primary" to="/registrar">Criar conta</router-link>
         </p>
       </div>
-    </biblioteca-form>
-  </biblioteca-container>
+    </imobiliaria-form>
+  </imobiliaria-container>
 </template>
 
 <script>
@@ -52,7 +52,7 @@ import { passwordLogin } from '@/modules/auth/auth.service';
 import { goToBasePage } from '@/router/route.service';
 
 export default {
-  name: 'BibliotecaLoginPage',
+  name: 'ImobiliariaLoginPage',
   data() {
     return {
       username: '',
@@ -69,7 +69,7 @@ export default {
       passwordLogin(this.username, this.password)
         .then(goToBasePage)
         .catch(err => {
-          if (err.response.data.message === 'USUARIO_INCORRETO') {
+          if (err.response.data.message === 'ADMINISTRADOR_INCORRETO') {
             toastError('E-mail e/ou senha incorretos');
           }
         });

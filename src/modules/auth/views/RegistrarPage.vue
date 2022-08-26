@@ -1,7 +1,7 @@
 <template>
   <el-main>
-    <biblioteca-row>
-      <biblioteca-col
+    <imobiliaria-row>
+      <imobiliaria-col
         class="text-center mb-3"
         :sm="12"
         :offset="6">
@@ -10,77 +10,77 @@
           src="@/assets/images/logo.png"
           alt=""
           width="80" />
-        <biblioteca-header size="md">Bem-vindo!</biblioteca-header>
+        <imobiliaria-header size="md">Bem-vindo!</imobiliaria-header>
         <small>Por favor, informe os seus dados</small>
-      </biblioteca-col>
-    </biblioteca-row>
-    <biblioteca-row>
-      <biblioteca-col
+      </imobiliaria-col>
+    </imobiliaria-row>
+    <imobiliaria-row>
+      <imobiliaria-col
         class="text-center mb-3"
         :sm="12"
         :offset="6">
-        <biblioteca-form v-slot="{ validate }" :submit="validateUsuario">
-          <biblioteca-row>
-            <biblioteca-col
+        <imobiliaria-form v-slot="{ validate }" :submit="validateAdministrador">
+          <imobiliaria-row>
+            <imobiliaria-col
               class="text-center mb-3">
-              <biblioteca-input
+              <imobiliaria-input
                 v-model="info.nome"
                 type="text"
                 name="nome"
                 rules="required"
                 placeholder="Nome"
                 :focus="true" />
-            </biblioteca-col>
-          </biblioteca-row>
-          <biblioteca-row>
-            <biblioteca-col
+            </imobiliaria-col>
+          </imobiliaria-row>
+          <imobiliaria-row>
+            <imobiliaria-col
               class="text-center mb-3">
-              <biblioteca-input
+              <imobiliaria-input
                 v-model="info.email"
                 type="email"
                 name="e-mail"
                 rules="required|email"
                 placeholder="E-mail" />
-            </biblioteca-col>
-          </biblioteca-row>
-          <biblioteca-row>
-            <biblioteca-col
+            </imobiliaria-col>
+          </imobiliaria-row>
+          <imobiliaria-row>
+            <imobiliaria-col
               class="text-center mb-3"
               :sm="12">
-              <biblioteca-input
+              <imobiliaria-input
                 v-model="info.senha"
                 name="senha"
                 type="password"
                 rules="required|min:6"
                 placeholder="Senha*" />
-            </biblioteca-col>
-            <biblioteca-col
+            </imobiliaria-col>
+            <imobiliaria-col
               class="text-center mb-3"
               :sm="12">
-              <biblioteca-input
+              <imobiliaria-input
                 v-model="info.confirmar_senha"
                 name="confirmar senha"
                 type="password"
                 rules="required|min:6"
                 placeholder="Confirmar senha*" />
-            </biblioteca-col>
-          </biblioteca-row>
-          <biblioteca-row>
-            <biblioteca-col
+            </imobiliaria-col>
+          </imobiliaria-row>
+          <imobiliaria-row>
+            <imobiliaria-col
               class="text-center mb-3">
-              <biblioteca-button
+              <imobiliaria-button
                 native-type="submit"
                 class="btn btn-dark"
                 @click="validate">
                 Confirmar
-              </biblioteca-button>
-            </biblioteca-col>
-          </biblioteca-row>
-        </biblioteca-form>
-      </biblioteca-col>
-    </biblioteca-row>
-    <biblioteca-row>
-      <biblioteca-col
+              </imobiliaria-button>
+            </imobiliaria-col>
+          </imobiliaria-row>
+        </imobiliaria-form>
+      </imobiliaria-col>
+    </imobiliaria-row>
+    <imobiliaria-row>
+      <imobiliaria-col
         class="text-center mb-3"
         :sm="12"
         :offset="6">
@@ -90,8 +90,8 @@
             <router-link class="color--primary" to="/login">Login</router-link>
           </p>
         </div>
-      </biblioteca-col>
-    </biblioteca-row>
+      </imobiliaria-col>
+    </imobiliaria-row>
   </el-main>
 </template>
 
@@ -101,7 +101,7 @@ import { toastError } from '@/services/toastService';
 import { goToBasePage } from '@/router/route.service';
 
 export default {
-  name: 'BibliotecaRegistrarPage',
+  name: 'ImobiliariaRegistrarPage',
   provide() {
     const infoRegistrarVm = {};
     Object.defineProperty(infoRegistrarVm, 'info', {
@@ -129,7 +129,7 @@ export default {
           }
         });
     },
-    validateUsuario() {
+    validateAdministrador() {
       const specialChars = !!(this.info.senha.match(/[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]+/) && this.info.senha.match(/\d+/));
 
       if (!specialChars) {

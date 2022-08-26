@@ -17,9 +17,9 @@ export function passwordLogin(username, password) {
     }));
 }
 
-export function registrar(usuario) {
+export function registrar(administrador) {
   return new Promise((resolve, reject) => authResource
-    .registrar(formatarDados(usuario))
+    .registrar(formatarDados(administrador))
     .then(({ data }) => {
       if (!data.token) {
         reject();
