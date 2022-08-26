@@ -13,7 +13,7 @@
         <biblioteca-p class="opacity--50 my--md">( Sem Empréstimos )</biblioteca-p>
       </div>
     </el-tab-pane>
-    <el-tab-pane label="Últimos imovels" name="imovels">
+    <el-tab-pane label="Últimos imoveis" name="imoveis">
       <div v-if="imovelList.length">
         <div
           v-for="imovel in imovelList"
@@ -23,16 +23,16 @@
         </div>
       </div>
       <div v-else>
-        <biblioteca-p class="opacity--50 my--md">( Sem imovels )</biblioteca-p>
+        <biblioteca-p class="opacity--50 my--md">( Sem imoveis )</biblioteca-p>
       </div>
     </el-tab-pane>
-    <el-tab-pane label="Últimos usuários" name="usuarios">
-      <div v-if="usuarioList.length">
+    <el-tab-pane label="Últimos usuários" name="administradors">
+      <div v-if="administradorList.length">
         <div
-          v-for="usuario in usuarioList"
-          :key="usuario.id"
+          v-for="administrador in administradorList"
+          :key="administrador.id"
           class="mb--xl">
-          <biblioteca-usuario-card :usuario="usuario" />
+          <biblioteca-administrador-card :administrador="administrador" />
         </div>
       </div>
       <div v-else>
@@ -43,26 +43,26 @@
 </template>
 
 <script>
-import { fetchImovels } from '@/modules/imovel/imovel.service';
-import { fetchUsuarios } from '@/modules/usuario/usuario.service';
+import { fetchImoveis } from '@/modules/imovel/imovel.service';
+import { fetchAdministradors } from '@/modules/administrador/administrador.service';
 import { fetchEmprestimos } from '@/modules/emprestimo/emprestimo.service';
 
-import BibliotecaImovelCard from '@/modules/imovel/components/ImovelCard.vue';
-import BibliotecaUsuarioCard from '@/modules/usuario/components/UsuarioCard.vue';
-import BibliotecaEmprestimoCard from '@/modules/emprestimo/components/EmprestimoCard.vue';
+import ImobiliariaImovelCard from '@/modules/imovel/components/ImovelCard.vue';
+import ImobiliariaAdministradorCard from '@/modules/administrador/components/AdministradorCard.vue';
+import ImobiliariaEmprestimoCard from '@/modules/emprestimo/components/EmprestimoCard.vue';
 
 export default {
-  name: 'BibliotecaHomeTabs',
+  name: 'ImobiliariaHomeTabs',
   components: {
-    BibliotecaImovelCard,
-    BibliotecaUsuarioCard,
-    BibliotecaEmprestimoCard,
+    ImobiliariaImovelCard,
+    ImobiliariaAdministradorCard,
+    ImobiliariaEmprestimoCard,
   },
   data() {
     return {
       tabActive: 'emprestimos',
       imovelList: [],
-      usuarioList: [],
+      administradorList: [],
       emprestimoList: [],
     };
   },
@@ -73,14 +73,14 @@ export default {
     fetch() {
       if (this.tabActive === 'emprestimos') {
         this.fetchEmprestimos();
-      } else if (this.tabActive === 'imovels') {
-        this.fetchImovels();
-      } else if (this.tabActive === 'usuarios') {
-        this.fetchUsuarios();
+      } else if (this.tabActive === 'imoveis') {
+        this.fetchImoveis();
+      } else if (this.tabActive === 'administradors') {
+        this.fetchAdministradors();
       }
     },
-    fetchImovels() {
-      fetchImovels()
+    fetchImoveis() {
+      fetchImoveis()
         .then(data => {
           this.imovelList = data.data;
         })
@@ -88,13 +88,13 @@ export default {
           this.imovelList = [];
         });
     },
-    fetchUsuarios() {
-      fetchUsuarios()
+    fetchAdministradors() {
+      fetchAdministradors()
         .then(data => {
-          this.usuarioList = data.data;
+          this.administradorList = data.data;
         })
         .catch(() => {
-          this.usuarioList = [];
+          this.administradorList = [];
         });
     },
     fetchEmprestimos() {

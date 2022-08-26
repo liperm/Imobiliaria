@@ -13,7 +13,7 @@
 import { goToBasePage } from '@/router/route.service';
 
 export default {
-  name: 'BibliotecaGenericErrorPage',
+  name: 'ImobiliariaGenericErrorPage',
   methods: {
     goToBasePage,
   },

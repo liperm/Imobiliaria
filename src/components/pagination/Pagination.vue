@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'BibliotecaPagination',
+  name: 'ImobiliariaPagination',
   inheritAttrs: false,
   props: {
     page: Number,

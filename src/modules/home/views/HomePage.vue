@@ -7,14 +7,14 @@
 </template>
 
 <script>
-import BibliotecaSingleContentLayout from '@/layouts/SingleContentLayout.vue';
-import BibliotecaHomeTabs from '@/modules/home/components/HomeTabs.vue';
+import ImobiliariaSingleContentLayout from '@/layouts/SingleContentLayout.vue';
+import ImobiliariaHomeTabs from '@/modules/home/components/HomeTabs.vue';
 
 export default {
-  name: 'BibliotecaHomeLayout',
+  name: 'ImobiliariaHomeLayout',
   components: {
-    BibliotecaSingleContentLayout,
-    BibliotecaHomeTabs,
+    ImobiliariaSingleContentLayout,
+    ImobiliariaHomeTabs,
   },
 };
 </script>

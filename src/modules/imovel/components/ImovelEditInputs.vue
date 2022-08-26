@@ -1,9 +1,9 @@
 <template>
   <div>
-    <biblioteca-form v-if="livroEditVm.livro" :submit="save">
+    <biblioteca-form v-if="imovelEditVm.imovel" :submit="save">
       <div class="form-field mt-4">
         <biblioteca-input
-          v-model="livroEditVm.livro.titulo"
+          v-model="imovelEditVm.imovel.titulo"
           label="Título*"
           name="titulo"
           type="text"
@@ -12,7 +12,7 @@
       </div>
       <div class="form-field">
         <biblioteca-textarea
-          v-model="livroEditVm.livro.resumo"
+          v-model="imovelEditVm.imovel.resumo"
           label="Resumo*"
           name="resumo"
           type="text"
@@ -33,7 +33,7 @@
           class="btn btn-success ms-2"
           width="110"
           size="sm">
-          <a v-if="livroEditVm.livro.id">Editar</a>
+          <a v-if="imovelEditVm.imovel.id">Editar</a>
           <a v-else>Adicionar</a>
         </biblioteca-button>
       </div>
@@ -45,8 +45,8 @@
 import { goHistoryBack } from '@/router/route.service';
 
 export default {
-  name: 'BibliotecaLivroEdit',
-  inject: ['livroEditVm'],
+  name: 'ImobiliariaImovelEdit',
+  inject: ['imovelEditVm'],
   data() {
     return {
     };

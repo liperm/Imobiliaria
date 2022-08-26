@@ -4,10 +4,10 @@
   </router-link>
 </template>
 <script>
-import { LIVROS_URL } from '@/modules/livro/livro.constants';
+import { LIVROS_URL } from '@/modules/imovel/imovel.constants';
 
 export default {
-  name: 'BibliotecaLivroLink',
+  name: 'ImobiliariaImovelLink',
   props: {
     id: {
       type: Number,

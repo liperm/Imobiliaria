@@ -16,7 +16,7 @@
 import { goToLoginPage } from '@/router/route.service';
 
 export default {
-  name: 'BibliotecaForbiddenPage',
+  name: 'ImobiliariaForbiddenPage',
   methods: {
     goToLoginPage,
   },

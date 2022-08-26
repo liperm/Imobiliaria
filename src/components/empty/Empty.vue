@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'BibliotecaEmpty',
+  name: 'ImobiliariaEmpty',
   props: {
     icon: {
       type: String,

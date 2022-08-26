@@ -43,7 +43,7 @@
 import { buildModal } from '@/components/modal/modal.service';
 
 export default {
-  name: 'BibliotecaModal',
+  name: 'ImobiliariaModal',
   props: {
     title: {
       type: String,

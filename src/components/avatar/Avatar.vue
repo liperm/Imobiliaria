@@ -13,7 +13,7 @@ import { sm, md, lg } from '@/components/components.constants';
 const EMPTY_ICON = 'el-icon-user-solid';
 
 export default {
-  name: 'BibliotecaAvatar',
+  name: 'ImobiliariaAvatar',
   props: {
     source: {
       type: String,

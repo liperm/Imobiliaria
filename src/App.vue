@@ -7,7 +7,7 @@
 <script>
 
 export default {
-  name: 'BibliotecaApp',
+  name: 'ImobiliariaApp',
   methods: {
   },
 };

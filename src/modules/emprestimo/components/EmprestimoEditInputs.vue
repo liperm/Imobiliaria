@@ -6,16 +6,16 @@
           ref="usuarioSelect"
           @on-change="onUsuarioChange" />
       </div>
-      <div v-for="(livro, index) in maxLivros" :key="index" class="form-field mt-4">
-        <biblioteca-livro-select
-          ref="livroSelect"
-          @on-change="onLivroChange($event, index)" />
-        <biblioteca-button class="btn btn-danger" @click="onRemoverLivros(index)">
-          Excluir Livro
+      <div v-for="(imovel, index) in maxImoveis" :key="index" class="form-field mt-4">
+        <biblioteca-imovel-select
+          ref="imovelSelect"
+          @on-change="onImovelChange($event, index)" />
+        <biblioteca-button class="btn btn-danger" @click="onRemoverImoveis(index)">
+          Excluir Imovel
         </biblioteca-button>
       </div>
-      <biblioteca-button @click="onAddLivros">
-        Adicionar Livros
+      <biblioteca-button @click="onAddImoveis">
+        Adicionar Imoveis
       </biblioteca-button>
 
       <div class="mt-4 mb-3 d--flex justify-content-end">
@@ -43,54 +43,54 @@
 import { goHistoryBack } from '@/router/route.service';
 import { toastError } from '@/services/toastService';
 
-import BibliotecaLivroSelect from '@/modules/livro/components/LivroSelect.vue';
-import BibliotecaUsuarioSelect from '@/modules/usuario/components/UsuarioSelect.vue';
+import ImobiliariaImovelSelect from '@/modules/imovel/components/ImovelSelect.vue';
+import ImobiliariaUsuarioSelect from '@/modules/usuario/components/UsuarioSelect.vue';
 
 export default {
-  name: 'BibliotecaEmprestimoEdit',
+  name: 'ImobiliariaEmprestimoEdit',
   components: {
-    BibliotecaLivroSelect,
-    BibliotecaUsuarioSelect,
+    ImobiliariaImovelSelect,
+    ImobiliariaUsuarioSelect,
   },
   inject: ['emprestimoEditVm'],
   data() {
     return {
       value: 1,
-      maxLivros: [],
-      livroErro: false,
+      maxImoveis: [],
+      imovelErro: false,
     };
   },
   mounted() {
-    this.maxLivros.push(this.value);
+    this.maxImoveis.push(this.value);
   },
   methods: {
     goHistoryBack,
     save() {
       this.$emit('save');
     },
-    onLivroChange(livroId, index) {
-      this.emprestimoEditVm.emprestimo.livros.forEach(livro => {
-        if (livro.id === livroId.id) {
-          this.livroErro = true;
-          this.onRemoverLivros(index);
-          toastError('Livro já existe no empréstimo');
+    onImovelChange(imovelId, index) {
+      this.emprestimoEditVm.emprestimo.imoveis.forEach(imovel => {
+        if (imovel.id === imovelId.id) {
+          this.imovelErro = true;
+          this.onRemoverImoveis(index);
+          toastError('Imovel já existe no empréstimo');
         }
       });
-      if (!this.livroErro) {
-        this.emprestimoEditVm.emprestimo.livros.push(livroId);
+      if (!this.imovelErro) {
+        this.emprestimoEditVm.emprestimo.imoveis.push(imovelId);
       }
-      this.livroErro = false;
+      this.imovelErro = false;
     },
     onUsuarioChange(usuario) {
       this.emprestimoEditVm.emprestimo.usuario = usuario;
     },
-    onAddLivros() {
+    onAddImoveis() {
       this.value += 1;
-      this.maxLivros.push({ id: this.value });
+      this.maxImoveis.push({ id: this.value });
     },
-    onRemoverLivros(index) {
-      this.maxLivros.splice(index, 1);
-      this.emprestimoEditVm.emprestimo.livros.splice(index, 1);
+    onRemoverImoveis(index) {
+      this.maxImoveis.splice(index, 1);
+      this.emprestimoEditVm.emprestimo.imoveis.splice(index, 1);
     },
   },
 };

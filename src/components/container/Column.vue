@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'BibliotecaCol',
+  name: 'ImobiliariaCol',
   props: {
     justify: {
       type: String,

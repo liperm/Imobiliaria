@@ -11,7 +11,7 @@ import { validator } from '@/components/components.validators';
 const SIZES = [sm, md, lg];
 
 export default {
-  name: 'BibliotecaHeader',
+  name: 'ImobiliariaHeader',
   props: {
     size: {
       type: String,

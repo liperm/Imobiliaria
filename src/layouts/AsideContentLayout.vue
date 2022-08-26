@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: 'BibliotecaAsideContentLayout',
+  name: 'ImobiliariaAsideContentLayout',
   props: {
     containerSize: String,
   },

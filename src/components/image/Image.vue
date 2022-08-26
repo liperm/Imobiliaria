@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'BibliotecaImage',
+  name: 'ImobiliariaImage',
   props: {
     src: String,
     fit: String,

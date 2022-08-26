@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  name: 'BibliotecaSmall',
+  name: 'ImobiliariaSmall',
 };
 </script>

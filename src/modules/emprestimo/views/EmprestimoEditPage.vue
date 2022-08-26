@@ -19,14 +19,14 @@ import { toastError } from '@/services/toastService';
 import { goToOpenEmprestimo } from '@/modules/emprestimo/emprestimo.routes';
 import { saveEmprestimo } from '@/modules/emprestimo/emprestimo.service';
 
-import BibliotecaEmprestimoEditInputs from '@/modules/emprestimo/components/EmprestimoEditInputs.vue';
-import BibliotecaSingleContentLayout from '@/layouts/SingleContentLayout.vue';
+import ImobiliariaEmprestimoEditInputs from '@/modules/emprestimo/components/EmprestimoEditInputs.vue';
+import ImobiliariaSingleContentLayout from '@/layouts/SingleContentLayout.vue';
 
 export default {
-  name: 'BibliotecaEmprestimoEditPage',
+  name: 'ImobiliariaEmprestimoEditPage',
   components: {
-    BibliotecaEmprestimoEditInputs,
-    BibliotecaSingleContentLayout,
+    ImobiliariaEmprestimoEditInputs,
+    ImobiliariaSingleContentLayout,
   },
   provide() {
     const emprestimoEditVm = {};
@@ -54,7 +54,7 @@ export default {
     } else {
       this.emprestimo = {
         usuario: {},
-        livros: [],
+        imoveis: [],
       };
     }
   },

@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'BibliotecaFormValidate',
+  name: 'ImobiliariaFormValidate',
   inheritAttrs: false,
   props: {
     submit: {

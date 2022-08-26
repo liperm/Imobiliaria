@@ -27,12 +27,12 @@
       <biblioteca-row class="mt-1">
         <biblioteca-col>
           <biblioteca-p class="biblioteca-u-text--medium">
-            Livros:
+            Imoveis:
           </biblioteca-p>
-          <biblioteca-p v-for="livro in emprestimo.livros" :key="livro" class="biblioteca-u-text--medium">
-            <biblioteca-livro-link :id="livro.id" target="_blank">
-              • {{ livro.titulo }}
-            </biblioteca-livro-link>
+          <biblioteca-p v-for="imovel in emprestimo.imoveis" :key="imovel" class="biblioteca-u-text--medium">
+            <biblioteca-imovel-link :id="imovel.id" target="_blank">
+              • {{ imovel.titulo }}
+            </biblioteca-imovel-link>
           </biblioteca-p>
         </biblioteca-col>
       </biblioteca-row>
@@ -48,16 +48,16 @@ import { getEmprestimo } from '@/modules/emprestimo/emprestimo.service';
 import { toastError } from '@/services/toastService';
 // eslint-disable-next-line import/no-cycle
 import { goToEmprestimoNotFound } from '@/modules/emprestimo/emprestimo.routes';
-import BibliotecaSingleContentLayout from '@/layouts/SingleContentLayout.vue';
-import BibliotecaUsuarioLink from '@/modules/usuario/components/UsuarioLink.vue';
-import BibliotecaLivroLink from '@/modules/livro/components/LivroLink.vue';
+import ImobiliariaSingleContentLayout from '@/layouts/SingleContentLayout.vue';
+import ImobiliariaUsuarioLink from '@/modules/usuario/components/UsuarioLink.vue';
+import ImobiliariaImovelLink from '@/modules/imovel/components/ImovelLink.vue';
 
 export default {
   name: 'EmprestimoViewPage',
   components: {
-    BibliotecaUsuarioLink,
-    BibliotecaLivroLink,
-    BibliotecaSingleContentLayout,
+    ImobiliariaUsuarioLink,
+    ImobiliariaImovelLink,
+    ImobiliariaSingleContentLayout,
   },
   data() {
     return {

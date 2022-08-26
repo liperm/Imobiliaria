@@ -6,42 +6,36 @@
       <imobiliaria-icon
         class="mt-2"
         size="xl"
-        icon="person" />
+        icon="book" />
     </imobiliaria-col>
     <imobiliaria-col
       :sm="20"
       :md="22">
       <imobiliaria-header v-truncate size="sm">
-        <imobiliaria-administrador-link :id="administrador.id">{{ administrador.nome }}</imobiliaria-administrador-link>
+        <imobiliaria-imovel-link :id="imovel.id">{{ imovel.titulo }}</imobiliaria-imovel-link>
       </imobiliaria-header>
       <imobiliaria-p
         v-truncate="2"
         color="regular">
-        {{ administrador.email }}
+        {{ imovel.resumo }}
       </imobiliaria-p>
     </imobiliaria-col>
   </imobiliaria-row>
 </template>
 
 <script>
-import imobiliariaAdministradorLink from '@/modules/administrador/components/AdministradorLink.vue';
+import ImobiliariaImovelLink from '@/modules/imovel/components/ImovelLink.vue';
 
 export default {
-  name: 'AdministradorCard',
+  name: 'ImovelListItem',
   components: {
-    imobiliariaAdministradorLink,
+    ImobiliariaImovelLink,
   },
   props: {
-    administrador: {
+    imovel: {
       type: Object,
       required: true,
     },
-  },
-  data() {
-    return {
-    };
-  },
-  computed: {
   },
 };
 </script>

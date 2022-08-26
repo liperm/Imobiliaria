@@ -63,14 +63,14 @@ import { toastError } from '@/services/toastService';
 import { fetchUsuarios, removeUsuario } from '@/modules/usuario/usuario.service';
 import { goToCreateUsuario } from '@/modules/usuario/usuario.routes';
 
-import BibliotecaUsuarioLink from '@/modules/usuario/components/UsuarioLink.vue';
-import BibliotecaSingleContentLayout from '@/layouts/SingleContentLayout.vue';
+import ImobiliariaUsuarioLink from '@/modules/usuario/components/UsuarioLink.vue';
+import ImobiliariaSingleContentLayout from '@/layouts/SingleContentLayout.vue';
 
 export default {
-  name: 'BibliotecaGerenciarUsuarios',
+  name: 'ImobiliariaGerenciarUsuarios',
   components: {
-    BibliotecaUsuarioLink,
-    BibliotecaSingleContentLayout,
+    ImobiliariaUsuarioLink,
+    ImobiliariaSingleContentLayout,
   },
   data() {
     return {

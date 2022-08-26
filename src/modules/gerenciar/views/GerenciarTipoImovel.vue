@@ -2,22 +2,22 @@
   <biblioteca-single-content-layout container-size="lg">
     <template #content>
       <div class="d--flex justify-content--space-between align-items--center">
-        <biblioteca-header>Livros</biblioteca-header>
-        <biblioteca-button @click="onCreateLivro">
-          Adicionar Livro
+        <biblioteca-header>Imoveis</biblioteca-header>
+        <biblioteca-button @click="onCreateImovel">
+          Adicionar Imovel
         </biblioteca-button>
       </div>
-      <table v-if="livroList && livroList.length > 0" class="table">
+      <table v-if="imovelList && imovelList.length > 0" class="table">
         <tbody>
-          <tr v-for="livro in livroList" :key="livro.id">
+          <tr v-for="imovel in imovelList" :key="imovel.id">
             <td class="py-3 px-2">
               <biblioteca-header size="sm" class="d-flex align-item--center">
-                <biblioteca-livro-link :id="livro.id">
-                  {{ livro.titulo }}
-                </biblioteca-livro-link>
+                <biblioteca-imovel-link :id="imovel.id">
+                  {{ imovel.titulo }}
+                </biblioteca-imovel-link>
               </biblioteca-header>
               <biblioteca-p color="regular">
-                {{ livro.resumo }}
+                {{ imovel.resumo }}
               </biblioteca-p>
             </td>
             <td class="align-middle text-end">
@@ -28,15 +28,15 @@
                   class="cursor--pointer mx--md" />
                 <el-dropdown-menu slot="dropdown">
                   <el-dropdown-item>
-                    <biblioteca-livro-link
-                      :id="livro.id"
+                    <biblioteca-imovel-link
+                      :id="imovel.id"
                       action="edit">
                       <biblioteca-icon size="sm" icon="pencil" />
                       Editar
-                    </biblioteca-livro-link>
+                    </biblioteca-imovel-link>
                   </el-dropdown-item>
                   <el-dropdown-item>
-                    <a @click="setDeleteLivro(livro)">
+                    <a @click="setDeleteImovel(imovel)">
                       <biblioteca-icon size="sm" icon="trash" />
                       Excluir
                     </a>
@@ -44,38 +44,38 @@
                 </el-dropdown-menu>
               </el-dropdown>
               <biblioteca-modal-delete
-                v-if="showModal(livro)"
-                content="Você realmente deseja excluir o livro?"
-                @close="setDeleteLivro(null)"
-                @confirm="onDeleteLivro(livro)">
+                v-if="showModal(imovel)"
+                content="Você realmente deseja excluir o imovel?"
+                @close="setDeleteImovel(null)"
+                @confirm="onDeleteImovel(imovel)">
               </biblioteca-modal-delete>
             </td>
           </tr>
         </tbody>
       </table>
-      <biblioteca-p v-else class="opacity--50 my--lg">( Sem livros )</biblioteca-p>
+      <biblioteca-p v-else class="opacity--50 my--lg">( Sem imoveis )</biblioteca-p>
     </template>
   </biblioteca-single-content-layout>
 </template>
 
 <script>
 import { toastError } from '@/services/toastService';
-import { fetchLivros, removeLivro } from '@/modules/livro/livro.service';
-import { goToCreateLivro } from '@/modules/livro/livro.routes';
+import { fetchImoveis, removeImovel } from '@/modules/imovel/imovel.service';
+import { goToCreateImovel } from '@/modules/imovel/imovel.routes';
 
-import BibliotecaLivroLink from '@/modules/livro/components/LivroLink.vue';
-import BibliotecaSingleContentLayout from '@/layouts/SingleContentLayout.vue';
+import ImobiliariaImovelLink from '@/modules/imovel/components/ImovelLink.vue';
+import ImobiliariaSingleContentLayout from '@/layouts/SingleContentLayout.vue';
 
 export default {
-  name: 'BibliotecaGerenciarLivros',
+  name: 'ImobiliariaGerenciarImoveis',
   components: {
-    BibliotecaLivroLink,
-    BibliotecaSingleContentLayout,
+    ImobiliariaImovelLink,
+    ImobiliariaSingleContentLayout,
   },
   data() {
     return {
-      livroList: [],
-      livroDelete: null,
+      imovelList: [],
+      imovelDelete: null,
     };
   },
   mounted() {
@@ -83,30 +83,30 @@ export default {
   },
   methods: {
     fetch() {
-      this.livroList = [];
-      fetchLivros()
+      this.imovelList = [];
+      fetchImoveis()
         .then(data => {
-          this.livroList = data.data;
+          this.imovelList = data.data;
         })
         .catch(() => {
-          this.livroList = [];
+          this.imovelList = [];
         });
     },
-    onCreateLivro() {
-      goToCreateLivro(this.$router);
+    onCreateImovel() {
+      goToCreateImovel(this.$router);
     },
-    setDeleteLivro(livro) {
-      this.livroDelete = livro;
+    setDeleteImovel(imovel) {
+      this.imovelDelete = imovel;
     },
-    showModal(livro) {
-      return this.livroDelete && this.livroDelete.id === livro.id;
+    showModal(imovel) {
+      return this.imovelDelete && this.imovelDelete.id === imovel.id;
     },
-    onDeleteLivro(livro) {
-      removeLivro(livro)
+    onDeleteImovel(imovel) {
+      removeImovel(imovel)
         .then(() => {
           this.$router.go(0);
         })
-        .catch(() => toastError('Não foi possível excluir o livro'));
+        .catch(() => toastError('Não foi possível excluir o imovel'));
     },
   },
 };

@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: 'BibliotecaModalConfirm',
+  name: 'ImobiliariaModalConfirm',
   props: {
     closeAfterConfirm: {
       type: Boolean,

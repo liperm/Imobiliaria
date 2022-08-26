@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'BibliotecaParagraph',
+  name: 'ImobiliariaParagraph',
   inheritAttrs: false,
   props: {
     color: {

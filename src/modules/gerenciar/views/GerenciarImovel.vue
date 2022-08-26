@@ -17,7 +17,7 @@
                 </biblioteca-emprestimo-link>
               </biblioteca-header>
               <biblioteca-p color="regular">
-                Quantidade de livros: {{ emprestimo.livros.length }}
+                Quantidade de imoveis: {{ emprestimo.imoveis.length }}
               </biblioteca-p>
               <biblioteca-p color="regular">
                 Status: {{ statusInfo[emprestimo.status] }}
@@ -65,14 +65,14 @@ import { EMPRESTIMO_STATUS } from '@/modules/emprestimo/emprestimo.constants';
 import { fetchEmprestimos, saveEmprestimo } from '@/modules/emprestimo/emprestimo.service';
 import { goToCreateEmprestimo } from '@/modules/emprestimo/emprestimo.routes';
 
-import BibliotecaEmprestimoLink from '@/modules/emprestimo/components/EmprestimoLink.vue';
-import BibliotecaSingleContentLayout from '@/layouts/SingleContentLayout.vue';
+import ImobiliariaEmprestimoLink from '@/modules/emprestimo/components/EmprestimoLink.vue';
+import ImobiliariaSingleContentLayout from '@/layouts/SingleContentLayout.vue';
 
 export default {
-  name: 'BibliotecaGerenciarEmprestimos',
+  name: 'ImobiliariaGerenciarEmprestimos',
   components: {
-    BibliotecaEmprestimoLink,
-    BibliotecaSingleContentLayout,
+    ImobiliariaEmprestimoLink,
+    ImobiliariaSingleContentLayout,
   },
   data() {
     return {

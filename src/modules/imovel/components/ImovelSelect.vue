@@ -1,29 +1,29 @@
 <template>
   <div>
-    <div v-if="livros.length > 1">
+    <div v-if="imoveis.length > 1">
       <div v-if="showLabel">
-        Livro*
+        Imovel*
       </div>
       <biblioteca-select
         v-bind="$attrs"
-        name="livro"
+        name="imovel"
         rules="required"
         :class="showLabel ? 'mt--md' : ''"
         @on-change="onChange">
-        <option :value="null" disabled>Selecione um livro...</option>
+        <option :value="null" disabled>Selecione um imovel...</option>
         <option
-          v-for="livro in livros"
-          :key="livro.id"
-          :value="livro.id">
-          {{ livro.titulo }}
+          v-for="imovel in imoveis"
+          :key="imovel.id"
+          :value="imovel.id">
+          {{ imovel.titulo }}
         </option>
       </biblioteca-select>
     </div>
     <div v-else class="mb-3 mt-4">
       <biblioteca-p color="danger">
-        *Você não possui livros cadastrados
+        *Você não possui imoveis cadastrados
         <biblioteca-button @click="onCreate">
-          Criar Livro
+          Criar Imovel
         </biblioteca-button>
       </biblioteca-p>
     </div>
@@ -31,11 +31,11 @@
 </template>
 
 <script>
-import { fetchLivros } from '@/modules/livro/livro.service';
-import { goToCreateLivro } from '@/modules/livro/livro.routes';
+import { fetchImoveis } from '@/modules/imovel/imovel.service';
+import { goToCreateImovel } from '@/modules/imovel/imovel.routes';
 
 export default {
-  name: 'BibliotecaLivroSelect',
+  name: 'ImobiliariaImovelSelect',
   props: {
     showLabel: {
       type: Boolean,
@@ -48,7 +48,7 @@ export default {
   },
   data() {
     return {
-      livros: [],
+      imoveis: [],
     };
   },
   created() {
@@ -56,19 +56,19 @@ export default {
   },
   methods: {
     onfetch() {
-      fetchLivros()
+      fetchImoveis()
         .then(data => {
-          this.livros = data.data;
+          this.imoveis = data.data;
         })
         .catch(() => {
-          this.livros = null;
+          this.imoveis = null;
         });
     },
     onChange(id) {
       this.$emit('on-change', { id });
     },
     onCreate() {
-      goToCreateLivro(this.$router);
+      goToCreateImovel(this.$router);
     },
   },
 };

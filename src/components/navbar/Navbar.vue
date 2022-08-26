@@ -23,7 +23,7 @@
 <script>
 
 export default {
-  name: 'BibliotecaNavbar',
+  name: 'ImobiliariaNavbar',
   props: {
     showBrand: {
       type: Boolean,

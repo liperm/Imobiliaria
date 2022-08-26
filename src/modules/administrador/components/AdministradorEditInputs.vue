@@ -85,7 +85,7 @@ import { goHistoryBack } from '@/router/route.service';
 import { toastError } from '@/services/toastService';
 
 export default {
-  name: 'BibliotecaUsuarioEdit',
+  name: 'ImobiliariaUsuarioEdit',
   inject: ['administradorEditVm'],
   data() {
     return {

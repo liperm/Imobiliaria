@@ -2,7 +2,7 @@
   <biblioteca-navbar>
     <template #right>
       <div class="d-flex align-items--center">
-        <biblioteca-button @click="onLivros">
+        <biblioteca-button @click="onImoveis">
           Imóvel
         </biblioteca-button>
         <biblioteca-button @click="onEmprestimos">
@@ -25,7 +25,7 @@ import { goToLoginPage } from '@/router/route.service';
 import { goToAdministrador, goToImovel, goToTipoImovel } from '@/modules/gerenciar/gerenciar.routes';
 
 export default {
-  name: 'BibliotecaTopbar',
+  name: 'ImobiliariaTopbar',
   data() {
     return {
     };
@@ -36,7 +36,7 @@ export default {
       removeCookie('session_id');
       goToLoginPage();
     },
-    onLivros() {
+    onImoveis() {
       goToAdministrador(this.$router);
     },
     onEmprestimos() {

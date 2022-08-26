@@ -14,7 +14,7 @@ import { validator, themeValidator } from '@/components/components.validators';
 const SIZES = [sm, md, lg, xl, xxl];
 
 export default {
-  name: 'BibliotecaIcon',
+  name: 'ImobiliariaIcon',
   inheritAttrs: false,
   props: {
     icon: {

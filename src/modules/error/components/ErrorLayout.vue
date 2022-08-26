@@ -12,7 +12,7 @@ import * as errorStore from '@/modules/error/error.store';
 import { getErrorDescription } from '@/modules/error/error.service';
 
 export default {
-  name: 'BibliotecaErrorLayout',
+  name: 'ImobiliariaErrorLayout',
   beforeRouteEnter(to, from, next) {
     if (errorStore.getters.getError()) {
       return next();

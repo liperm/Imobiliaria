@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'BibliotecaContainer',
+  name: 'ImobiliariaContainer',
   inheritAttrs: false,
   props: {
     size: String,

@@ -22,7 +22,7 @@ const SIZES = [xs, sm, md, lg];
 const NATIVE_TYPES = ['button', 'submit', 'reset'];
 
 export default {
-  name: 'BibliotecaButton',
+  name: 'ImobiliariaButton',
   inheritAttrs: false,
   props: {
     plain: {

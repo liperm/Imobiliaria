@@ -62,13 +62,13 @@ export default {
           this.administrador = data.data;
         })
         .catch(err => {
-          this.livro = null;
+          this.imovel = null;
           if (err) {
             goToAdministradorNotFound(this.$router);
           } else if ((err.response.data.errors === ADMINISTRADOR_ERRORS[err.response.status] && err.response.status === 404)) {
             goToAdministradorNotFound(this.$router);
           } else {
-            toastError('Erro ao buscar o livro');
+            toastError('Erro ao buscar o imovel');
           }
         });
     },

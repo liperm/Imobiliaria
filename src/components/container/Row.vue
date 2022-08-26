@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'BibliotecaRow',
+  name: 'ImobiliariaRow',
   inheritAttrs: false,
   props: {
     type: String,

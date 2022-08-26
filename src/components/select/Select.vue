@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: 'BibliotecaSelect',
+  name: 'ImobiliariaSelect',
   inheritAttrs: false,
   props: {
     value: {

@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'BibliotecaSingleContentLayout',
+  name: 'ImobiliariaSingleContentLayout',
   props: {
     containerSize: String,
   },

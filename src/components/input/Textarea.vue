@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: 'BibliotecaTextareaValidate',
+  name: 'ImobiliariaTextareaValidate',
   inheritAttrs: false,
   props: {
     label: {

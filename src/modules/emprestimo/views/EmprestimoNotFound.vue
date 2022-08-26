@@ -18,12 +18,12 @@
 
 <script>
 import { goToBasePage } from '@/router/route.service';
-import BibliotecaSingleContentLayout from '@/layouts/SingleContentLayout.vue';
+import ImobiliariaSingleContentLayout from '@/layouts/SingleContentLayout.vue';
 
 export default {
-  name: 'BibliotecaEmprestimoNotFoundPage',
+  name: 'ImobiliariaEmprestimoNotFoundPage',
   components: {
-    BibliotecaSingleContentLayout,
+    ImobiliariaSingleContentLayout,
   },
   methods: {
     goToBasePage,

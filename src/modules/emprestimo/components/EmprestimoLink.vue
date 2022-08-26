@@ -7,7 +7,7 @@
 import { EMPRESTIMOS_URL } from '@/modules/emprestimo/emprestimo.constants';
 
 export default {
-  name: 'BibliotecaEmprestimoLink',
+  name: 'ImobiliariaEmprestimoLink',
   props: {
     id: {
       type: Number,

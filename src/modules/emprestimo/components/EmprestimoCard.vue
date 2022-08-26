@@ -15,7 +15,7 @@
         <biblioteca-emprestimo-link :id="emprestimo.id">{{ emprestimo.usuario.nome }}</biblioteca-emprestimo-link>
       </biblioteca-header>
       <biblioteca-p color="regular">
-        Quantidade de livros: {{ emprestimo.livros.length }}
+        Quantidade de imoveis: {{ emprestimo.imoveis.length }}
       </biblioteca-p>
       <biblioteca-p color="regular">
         Status: {{ statusInfo[emprestimo.status] }}
@@ -32,12 +32,12 @@ import moment from 'moment';
 
 import { EMPRESTIMO_STATUS } from '@/modules/emprestimo/emprestimo.constants';
 
-import BibliotecaEmprestimoLink from '@/modules/emprestimo/components/EmprestimoLink.vue';
+import ImobiliariaEmprestimoLink from '@/modules/emprestimo/components/EmprestimoLink.vue';
 
 export default {
   name: 'EmprestimoListItem',
   components: {
-    BibliotecaEmprestimoLink,
+    ImobiliariaEmprestimoLink,
   },
   props: {
     emprestimo: {
