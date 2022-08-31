@@ -1,16 +1,16 @@
 <template>
   <el-container>
     <el-header>
-      <biblioteca-topbar />
+      <imobiliaria-topbar />
     </el-header>
     <el-main>
-      <biblioteca-container :size="containerSize">
-        <div class="biblioteca-single-content-layout">
-          <div class="biblioteca-single-content-layout__main">
+      <imobiliaria-container :size="containerSize">
+        <div class="imobiliaria-single-content-layout">
+          <div class="imobiliaria-single-content-layout__main">
             <slot name="content" />
           </div>
         </div>
-      </biblioteca-container>
+      </imobiliaria-container>
     </el-main>
   </el-container>
 </template>
@@ -29,13 +29,13 @@ export default {
 @import '@/scss/bootstrap/container';
 @import '@/scss/bootstrap/mixins';
 
-.biblioteca-single-content-layout {
+.imobiliaria-single-content-layout {
   width: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
 
-  .biblioteca-single-content-layout__main {
+  .imobiliaria-single-content-layout__main {
     width: 100%;
     padding-top: $padding-lg;
 

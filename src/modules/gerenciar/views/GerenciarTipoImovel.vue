@@ -1,81 +1,84 @@
 <template>
-  <biblioteca-single-content-layout container-size="lg">
+  <imobiliaria-single-content-layout container-size="lg">
     <template #content>
       <div class="d--flex justify-content--space-between align-items--center">
-        <biblioteca-header>Imoveis</biblioteca-header>
-        <biblioteca-button @click="onCreateImovel">
-          Adicionar Imovel
-        </biblioteca-button>
+        <imobiliaria-header>Tipo Imóvel</imobiliaria-header>
+        <imobiliaria-button @click="onCreateTipoImovel">
+          Adicionar Tipo Imóvel
+        </imobiliaria-button>
       </div>
-      <table v-if="imovelList && imovelList.length > 0" class="table">
+      <table v-if="tipoimovelList && tipoimovelList.length > 0" class="table">
         <tbody>
-          <tr v-for="imovel in imovelList" :key="imovel.id">
+          <tr v-for="tipoimovel in tipoimovelList" :key="tipoimovel.id">
             <td class="py-3 px-2">
-              <biblioteca-header size="sm" class="d-flex align-item--center">
-                <biblioteca-imovel-link :id="imovel.id">
-                  {{ imovel.titulo }}
-                </biblioteca-imovel-link>
-              </biblioteca-header>
-              <biblioteca-p color="regular">
-                {{ imovel.resumo }}
-              </biblioteca-p>
+              <imobiliaria-header size="sm" class="d-flex align-item--center">
+                <imobiliaria-tipo-imovel-link :id="tipoimovel.id">
+                  Usuário: {{ tipoimovel.administrador.nome }}
+                </imobiliaria-tipo-imovel-link>
+              </imobiliaria-header>
+              <imobiliaria-p color="regular">
+                Quantidade de imoveis: {{ tipoimovel.imoveis.length }}
+              </imobiliaria-p>
+              <imobiliaria-p color="regular">
+                Status: {{ statusInfo[tipoimovel.status] }}
+              </imobiliaria-p>
+              <imobiliaria-p color="regular">
+                Data Retirada: {{ formatarData(tipoimovel.dataRetirada) }}
+              </imobiliaria-p>
             </td>
             <td class="align-middle text-end">
               <el-dropdown
+                v-if="tipoimovel.status != 2"
                 trigger="click">
-                <biblioteca-icon
+                <imobiliaria-icon
                   icon="three-dots-vertical"
                   class="cursor--pointer mx--md" />
                 <el-dropdown-menu slot="dropdown">
                   <el-dropdown-item>
-                    <biblioteca-imovel-link
-                      :id="imovel.id"
-                      action="edit">
-                      <biblioteca-icon size="sm" icon="pencil" />
-                      Editar
-                    </biblioteca-imovel-link>
-                  </el-dropdown-item>
-                  <el-dropdown-item>
-                    <a @click="setDeleteImovel(imovel)">
-                      <biblioteca-icon size="sm" icon="trash" />
-                      Excluir
+                    <a @click="setDevolverTipoImovel(tipoimovel)">
+                      <imobiliaria-icon size="sm" icon="send-check" />
+                      Devolver
                     </a>
                   </el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
-              <biblioteca-modal-delete
-                v-if="showModal(imovel)"
-                content="Você realmente deseja excluir o imovel?"
-                @close="setDeleteImovel(null)"
-                @confirm="onDeleteImovel(imovel)">
-              </biblioteca-modal-delete>
+              <imobiliaria-modal-delete
+                v-if="showModal(tipoimovel)"
+                content="Você realmente deseja devolver o empréstimo?"
+                @close="setDevolverTipoImovel(null)"
+                @confirm="onDevolverTipoImovel(tipoimovel)">
+              </imobiliaria-modal-delete>
             </td>
           </tr>
         </tbody>
       </table>
-      <biblioteca-p v-else class="opacity--50 my--lg">( Sem imoveis )</biblioteca-p>
+      <imobiliaria-p v-else class="opacity--50 my--lg">( Sem Tipos de Imóvel )</imobiliaria-p>
     </template>
-  </biblioteca-single-content-layout>
+  </imobiliaria-single-content-layout>
 </template>
 
 <script>
-import { toastError } from '@/services/toastService';
-import { fetchImoveis, removeImovel } from '@/modules/imovel/imovel.service';
-import { goToCreateImovel } from '@/modules/imovel/imovel.routes';
+import moment from 'moment';
 
-import ImobiliariaImovelLink from '@/modules/imovel/components/ImovelLink.vue';
+import { toastError } from '@/services/toastService';
+import { EMPRESTIMO_STATUS } from '@/modules/tipoImovel/tipoImovel.constants';
+import { fetchTipoImoveis, saveTipoImovel } from '@/modules/tipoImovel/tipoImovel.service';
+import { goToCreateTipoImovel } from '@/modules/tipoImovel/tipoImovel.routes';
+
+import ImobiliariaTipoImovelLink from '@/modules/tipoImovel/components/TipoImovelLink.vue';
 import ImobiliariaSingleContentLayout from '@/layouts/SingleContentLayout.vue';
 
 export default {
-  name: 'ImobiliariaGerenciarImoveis',
+  name: 'ImobiliariaGerenciarTipoImoveis',
   components: {
-    ImobiliariaImovelLink,
+    ImobiliariaTipoImovelLink,
     ImobiliariaSingleContentLayout,
   },
   data() {
     return {
-      imovelList: [],
-      imovelDelete: null,
+      tipoimovelList: [],
+      tipoimovelDevolver: null,
+      statusInfo: EMPRESTIMO_STATUS,
     };
   },
   mounted() {
@@ -83,30 +86,30 @@ export default {
   },
   methods: {
     fetch() {
-      this.imovelList = [];
-      fetchImoveis()
+      this.tipoimovelList = [];
+      fetchTipoImoveis()
         .then(data => {
-          this.imovelList = data.data;
+          this.tipoimovelList = data.data;
         })
         .catch(() => {
-          this.imovelList = [];
+          this.tipoimovelList = [];
         });
     },
-    onCreateImovel() {
-      goToCreateImovel(this.$router);
+    onCreateTipoImovel() {
+      goToCreateTipoImovel(this.$router);
     },
-    setDeleteImovel(imovel) {
-      this.imovelDelete = imovel;
+    showModal(tipoimovel) {
+      return this.tipoimovelDevolver && this.tipoimovelDevolver.id === tipoimovel.id;
     },
-    showModal(imovel) {
-      return this.imovelDelete && this.imovelDelete.id === imovel.id;
-    },
-    onDeleteImovel(imovel) {
-      removeImovel(imovel)
+    onDevolverTipoImovel(tipoimovel) {
+      tipoimovel.status = 2;
+      saveTipoImovel(tipoimovel)
         .then(() => {
-          this.$router.go(0);
         })
-        .catch(() => toastError('Não foi possível excluir o imovel'));
+        .catch(() => toastError('Não foi possível devolver o empréstimo'));
+    },
+    formatarData(data) {
+      return moment(data).format('DD/MM/YYYY');
     },
   },
 };

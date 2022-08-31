@@ -1,9 +1,9 @@
 <template>
-  <biblioteca-single-content-layout container-size="lg">
+  <imobiliaria-single-content-layout container-size="lg">
     <template #content>
-      <biblioteca-home-tabs />
+      <imobiliaria-home-tabs />
     </template>
-  </biblioteca-single-content-layout>
+  </imobiliaria-single-content-layout>
 </template>
 
 <script>

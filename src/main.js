@@ -7,7 +7,7 @@ import router from '@/router';
 import '@/directives';
 import '@/config/element-ui';
 import '@/config/vee-validate';
-import '@/config/biblioteca-components';
+import '@/config/imobiliaria-components';
 
 import App from '@/App.vue';
 

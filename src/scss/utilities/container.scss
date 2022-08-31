@@ -1,7 +1,7 @@
 @import '../bootstrap/container';
 @import '../bootstrap/mixins';
 
-.biblioteca-container {
+.imobiliaria-container {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: space-between;
 
-  &.biblioteca-container--md {
+  &.imobiliaria-container--md {
     max-width: $container-max-width-md;
 
     @include media-breakpoint-down(md) {
@@ -19,7 +19,7 @@
     }
   }
 
-  &.biblioteca-container--lg {
+  &.imobiliaria-container--lg {
     max-width: $container-max-width-lg;
 
     @include media-breakpoint-down(lg) {
@@ -30,7 +30,7 @@
     }
   }
 
-  &.biblioteca-container--xl {
+  &.imobiliaria-container--xl {
     max-width: $container-max-width-xl;
 
     @include media-breakpoint-down(xl) {
@@ -44,7 +44,7 @@
     }
   }
 
-  &.biblioteca-container--xxl {
+  &.imobiliaria-container--xxl {
     max-width: $container-max-width-xxl;
 
     @include media-breakpoint-down(xxl) {

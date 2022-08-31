@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand navbar-light bg-light border-0 shadow-sm p--md">
-    <biblioteca-container size="xxl">
+    <imobiliaria-container size="xxl">
       <slot v-if="showBrand" name="brand">
         <a class="navbar-brand" href="/">
           <img
@@ -16,7 +16,7 @@
           <slot name="right" />
         </ul>
       </div>
-    </biblioteca-container>
+    </imobiliaria-container>
   </nav>
 </template>
 

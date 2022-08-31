@@ -4,7 +4,7 @@
   </router-link>
 </template>
 <script>
-import { LIVROS_URL } from '@/modules/imovel/imovel.constants';
+import { IMOVEIS_URL } from '@/modules/imovel/imovel.constants';
 
 export default {
   name: 'ImobiliariaImovelLink',
@@ -24,8 +24,8 @@ export default {
   computed: {
     to() {
       return {
-        name: LIVROS_URL[this.action].name,
-        path: LIVROS_URL[this.action].path,
+        name: IMOVEIS_URL[this.action].name,
+        path: IMOVEIS_URL[this.action].path,
         params: {
           id: this.id,
         },

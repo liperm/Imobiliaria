@@ -1,20 +1,20 @@
 export const EMPRESTIMOS_URL = Object.freeze({
-  path: '/emprestimos',
+  path: '/tipo-imoveis',
   view: {
-    name: 'emprestimo.view',
-    path: '/emprestimos/ver/:id',
+    name: 'tipoimovel.view',
+    path: '/tipo-imoveis/ver/:id',
   },
   edit: {
-    name: 'emprestimo.edit',
-    path: '/emprestimos/editar/:id',
+    name: 'tipoimovel.edit',
+    path: '/tipo-imoveis/editar/:id',
   },
   create: {
-    name: 'emprestimo.create',
-    path: '/emprestimos/criar',
+    name: 'tipoimovel.create',
+    path: '/tipo-imoveis/criar',
   },
   notfound: {
-    name: 'emprestimo.notfound',
-    path: '/emprestimos/nao-encontrado',
+    name: 'tipoimovel.notfound',
+    path: '/tipo-imoveis/nao-encontrado',
   },
 });
 

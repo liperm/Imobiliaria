@@ -1,81 +1,81 @@
 <template>
-  <biblioteca-single-content-layout container-size="lg">
+  <imobiliaria-single-content-layout container-size="lg">
     <template #content>
       <div class="d--flex justify-content--space-between align-items--center">
-        <biblioteca-header>Usuários</biblioteca-header>
-        <biblioteca-button @click="onCreateUsuario">
+        <imobiliaria-header>Usuários</imobiliaria-header>
+        <imobiliaria-button @click="onCreateAdministrador">
           Adicionar Usuário
-        </biblioteca-button>
+        </imobiliaria-button>
       </div>
-      <table v-if="usuarioList && usuarioList.length > 0" class="table">
+      <table v-if="administradorList && administradorList.length > 0" class="table">
         <tbody>
-          <tr v-for="usuario in usuarioList" :key="usuario.id">
+          <tr v-for="administrador in administradorList" :key="administrador.id">
             <td class="py-3 px-2">
-              <biblioteca-header size="sm" class="d-flex align-item--center">
-                <biblioteca-usuario-link :id="usuario.id">
-                  {{ usuario.nome }}
-                </biblioteca-usuario-link>
-              </biblioteca-header>
-              <biblioteca-p color="regular">
-                {{ usuario.email }}
-              </biblioteca-p>
+              <imobiliaria-header size="sm" class="d-flex align-item--center">
+                <imobiliaria-administrador-link :id="administrador.id">
+                  {{ administrador.nome }}
+                </imobiliaria-administrador-link>
+              </imobiliaria-header>
+              <imobiliaria-p color="regular">
+                {{ administrador.email }}
+              </imobiliaria-p>
             </td>
             <td class="align-middle text-end">
               <el-dropdown
                 trigger="click">
-                <biblioteca-icon
+                <imobiliaria-icon
                   icon="three-dots-vertical"
                   class="cursor--pointer mx--md" />
                 <el-dropdown-menu slot="dropdown">
                   <el-dropdown-item>
-                    <biblioteca-usuario-link
-                      :id="usuario.id"
+                    <imobiliaria-administrador-link
+                      :id="administrador.id"
                       action="edit">
-                      <biblioteca-icon size="sm" icon="pencil" />
+                      <imobiliaria-icon size="sm" icon="pencil" />
                       Editar
-                    </biblioteca-usuario-link>
+                    </imobiliaria-administrador-link>
                   </el-dropdown-item>
                   <el-dropdown-item>
-                    <a @click="setDeleteUsuario(usuario)">
-                      <biblioteca-icon size="sm" icon="trash" />
+                    <a @click="setDeleteAdministrador(administrador)">
+                      <imobiliaria-icon size="sm" icon="trash" />
                       Excluir
                     </a>
                   </el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
-              <biblioteca-modal-delete
-                v-if="showModal(usuario)"
+              <imobiliaria-modal-delete
+                v-if="showModal(administrador)"
                 content="Você realmente deseja excluir o usuário?"
-                @close="setDeleteUsuario(null)"
-                @confirm="onDeleteUsuario(usuario)">
-              </biblioteca-modal-delete>
+                @close="setDeleteAdministrador(null)"
+                @confirm="onDeleteAdministrador(administrador)">
+              </imobiliaria-modal-delete>
             </td>
           </tr>
         </tbody>
       </table>
-      <biblioteca-p v-else class="opacity--50 my--lg">( Sem usuários )</biblioteca-p>
+      <imobiliaria-p v-else class="opacity--50 my--lg">( Sem usuários )</imobiliaria-p>
     </template>
-  </biblioteca-single-content-layout>
+  </imobiliaria-single-content-layout>
 </template>
 
 <script>
 import { toastError } from '@/services/toastService';
-import { fetchUsuarios, removeUsuario } from '@/modules/usuario/usuario.service';
-import { goToCreateUsuario } from '@/modules/usuario/usuario.routes';
+import { fetchAdministradores, removeAdministrador } from '@/modules/administrador/administrador.service';
+import { goToCreateAdministrador } from '@/modules/administrador/administrador.routes';
 
-import ImobiliariaUsuarioLink from '@/modules/usuario/components/UsuarioLink.vue';
+import ImobiliariaAdministradorLink from '@/modules/administrador/components/AdministradorLink.vue';
 import ImobiliariaSingleContentLayout from '@/layouts/SingleContentLayout.vue';
 
 export default {
-  name: 'ImobiliariaGerenciarUsuarios',
+  name: 'ImobiliariaGerenciarAdministradores',
   components: {
-    ImobiliariaUsuarioLink,
+    ImobiliariaAdministradorLink,
     ImobiliariaSingleContentLayout,
   },
   data() {
     return {
-      usuarioList: [],
-      usuarioDelete: null,
+      administradorList: [],
+      administradorDelete: null,
     };
   },
   mounted() {
@@ -83,26 +83,26 @@ export default {
   },
   methods: {
     fetch() {
-      this.usuarioList = [];
-      fetchUsuarios()
+      this.administradorList = [];
+      fetchAdministradores()
         .then(data => {
-          this.usuarioList = data.data;
+          this.administradorList = data.data;
         })
         .catch(() => {
-          this.usuarioList = [];
+          this.administradorList = [];
         });
     },
-    onCreateUsuario() {
-      goToCreateUsuario(this.$router);
+    onCreateAdministrador() {
+      goToCreateAdministrador(this.$router);
     },
-    setDeleteUsuario(usuario) {
-      this.usuarioDelete = usuario;
+    setDeleteAdministrador(administrador) {
+      this.administradorDelete = administrador;
     },
-    showModal(usuario) {
-      return this.usuarioDelete && this.usuarioDelete.id === usuario.id;
+    showModal(administrador) {
+      return this.administradorDelete && this.administradorDelete.id === administrador.id;
     },
-    onDeleteUsuario(usuario) {
-      removeUsuario(usuario)
+    onDeleteAdministrador(administrador) {
+      removeAdministrador(administrador)
         .then(() => {
           this.$router.go(0);
         })

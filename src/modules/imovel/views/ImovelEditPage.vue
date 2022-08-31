@@ -14,7 +14,7 @@
 
 <script>
 import { toastError } from '@/services/toastService';
-import { LIVRO_ERRORS } from '@/modules/imovel/imovel.constants';
+import { IMOVEL_ERRORS } from '@/modules/imovel/imovel.constants';
 // eslint-disable-next-line import/no-cycle
 import { goToOpenImovel, goToImovelNotFound } from '@/modules/imovel/imovel.routes';
 import { saveImovel, getImovel } from '@/modules/imovel/imovel.service';
@@ -65,7 +65,7 @@ export default {
           this.imovel = null;
           if (err) {
             goToImovelNotFound(this.$router);
-          } else if ((err.response.data.errors === LIVRO_ERRORS[err.response.status] && err.response.status === 404)) {
+          } else if ((err.response.data.errors === IMOVEL_ERRORS[err.response.status] && err.response.status === 404)) {
             goToImovelNotFound(this.$router);
           } else {
             toastError('Erro ao buscar o imovel');

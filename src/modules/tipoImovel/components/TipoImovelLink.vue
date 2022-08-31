@@ -4,10 +4,10 @@
   </router-link>
 </template>
 <script>
-import { EMPRESTIMOS_URL } from '@/modules/emprestimo/emprestimo.constants';
+import { EMPRESTIMOS_URL } from '@/modules/tipoImovel/tipoImovel.constants';
 
 export default {
-  name: 'ImobiliariaEmprestimoLink',
+  name: 'ImobiliariaTipoImovelLink',
   props: {
     id: {
       type: Number,

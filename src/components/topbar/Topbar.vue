@@ -1,22 +1,22 @@
 <template>
-  <biblioteca-navbar>
+  <imobiliaria-navbar>
     <template #right>
       <div class="d-flex align-items--center">
-        <biblioteca-button @click="onImoveis">
+        <imobiliaria-button @click="onImoveis">
           Imóvel
-        </biblioteca-button>
-        <biblioteca-button @click="onEmprestimos">
+        </imobiliaria-button>
+        <imobiliaria-button @click="onTipoImoveis">
           Tipo de Imóvel
-        </biblioteca-button>
-        <biblioteca-button @click="onUsuarios">
+        </imobiliaria-button>
+        <imobiliaria-button @click="onAdministradores">
           Administrador
-        </biblioteca-button>
-        <biblioteca-button @click="onLogout">
+        </imobiliaria-button>
+        <imobiliaria-button @click="onLogout">
           Sair
-        </biblioteca-button>
+        </imobiliaria-button>
       </div>
     </template>
-  </biblioteca-navbar>
+  </imobiliaria-navbar>
 </template>
 
 <script>
@@ -37,13 +37,13 @@ export default {
       goToLoginPage();
     },
     onImoveis() {
-      goToAdministrador(this.$router);
-    },
-    onEmprestimos() {
       goToImovel(this.$router);
     },
-    onUsuarios() {
+    onTipoImoveis() {
       goToTipoImovel(this.$router);
+    },
+    onAdministradores() {
+      goToAdministrador(this.$router);
     },
   },
 };

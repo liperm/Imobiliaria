@@ -1,6 +1,6 @@
 <template>
   <div>
-    <imobiliaria-form v-if="administradorEditVm.administrador" v-slot="{ validate }" :submit="validateUsuario">
+    <imobiliaria-form v-if="administradorEditVm.administrador" v-slot="{ validate }" :submit="validateAdministrador">
       <div class="form-field mt-4">
         <imobiliaria-input
           v-model="administradorEditVm.administrador.nome"
@@ -85,7 +85,7 @@ import { goHistoryBack } from '@/router/route.service';
 import { toastError } from '@/services/toastService';
 
 export default {
-  name: 'ImobiliariaUsuarioEdit',
+  name: 'ImobiliariaAdministradorEdit',
   inject: ['administradorEditVm'],
   data() {
     return {
@@ -98,10 +98,11 @@ export default {
     save() {
       this.$emit('save');
     },
-    validateUsuario() {
+    validateAdministrador() {
       if (this.senha) {
         this.administradorEditVm.administrador.senha = this.senha;
-        const specialChars = !!(this.administradorEditVm.administrador.senha.match(/[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]+/) && this.administradorEditVm.administrador.senha.match(/\d+/));
+        const specialChars = !!(this.administradorEditVm.administrador.senha.match(/[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]+/) && this.administradorEditVm.administrador
+          .senha.match(/\d+/));
 
         if (!specialChars) {
           toastError('A senha deve conter caracteres especiais e números');

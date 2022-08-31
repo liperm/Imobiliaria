@@ -1,7 +1,7 @@
 <template>
   <div class="d--flex direction--column align-items--center mt--xl">
-    <biblioteca-icon :icon="icon" :size="iconSize" class="opacity--50 mx--lg" />
-    <biblioteca-p v-if="description" size="md" class="opacity--50 m--lg">{{ description }}</biblioteca-p>
+    <imobiliaria-icon :icon="icon" :size="iconSize" class="opacity--50 mx--lg" />
+    <imobiliaria-p v-if="description" size="md" class="opacity--50 m--lg">{{ description }}</imobiliaria-p>
     <div v-if="$slots.footer" class="m--lg">
       <slot name="footer" />
     </div>

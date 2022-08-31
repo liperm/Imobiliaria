@@ -1,5 +1,5 @@
 <template>
-  <biblioteca-modal
+  <imobiliaria-modal
     ref="modal"
     title="Alerta"
     v-bind="$attrs"
@@ -10,14 +10,14 @@
       </div>
     </template>
     <template #footer>
-      <biblioteca-button
+      <imobiliaria-button
         class="btn btn-success"
         size="sm"
         @click="confirm()">
         Confirmar
-      </biblioteca-button>
+      </imobiliaria-button>
     </template>
-  </biblioteca-modal>
+  </imobiliaria-modal>
 </template>
 
 <script>

@@ -1,16 +1,16 @@
 <template>
   <el-tabs v-model="tabActive" @tab-click="fetch">
-    <el-tab-pane label="Últimos Empréstimos" name="emprestimos">
-      <div v-if="emprestimoList.length">
+    <el-tab-pane label="Últimos Tipo de Imovel" name="tipoimoveis">
+      <div v-if="tipoimovelList.length">
         <div
-          v-for="emprestimo in emprestimoList"
-          :key="emprestimo.id"
+          v-for="tipoimovel in tipoimovelList"
+          :key="tipoimovel.id"
           class="mb--xl">
-          <biblioteca-emprestimo-card :emprestimo="emprestimo" />
+          <imobiliaria-tipoimovel-card :tipoimovel="tipoimovel" />
         </div>
       </div>
       <div v-else>
-        <biblioteca-p class="opacity--50 my--md">( Sem Empréstimos )</biblioteca-p>
+        <imobiliaria-p class="opacity--50 my--md">( Sem Tipo Imovel )</imobiliaria-p>
       </div>
     </el-tab-pane>
     <el-tab-pane label="Últimos imoveis" name="imoveis">
@@ -19,24 +19,24 @@
           v-for="imovel in imovelList"
           :key="imovel.id"
           class="mb--xl">
-          <biblioteca-imovel-card :imovel="imovel" />
+          <imobiliaria-imovel-card :imovel="imovel" />
         </div>
       </div>
       <div v-else>
-        <biblioteca-p class="opacity--50 my--md">( Sem imoveis )</biblioteca-p>
+        <imobiliaria-p class="opacity--50 my--md">( Sem imoveis )</imobiliaria-p>
       </div>
     </el-tab-pane>
-    <el-tab-pane label="Últimos usuários" name="administradors">
+    <el-tab-pane label="Últimos usuários" name="administradores">
       <div v-if="administradorList.length">
         <div
           v-for="administrador in administradorList"
           :key="administrador.id"
           class="mb--xl">
-          <biblioteca-administrador-card :administrador="administrador" />
+          <imobiliaria-administrador-card :administrador="administrador" />
         </div>
       </div>
       <div v-else>
-        <biblioteca-p class="opacity--50 my--md">( Sem usuários )</biblioteca-p>
+        <imobiliaria-p class="opacity--50 my--md">( Sem usuários )</imobiliaria-p>
       </div>
     </el-tab-pane>
   </el-tabs>
@@ -44,26 +44,26 @@
 
 <script>
 import { fetchImoveis } from '@/modules/imovel/imovel.service';
-import { fetchAdministradors } from '@/modules/administrador/administrador.service';
-import { fetchEmprestimos } from '@/modules/emprestimo/emprestimo.service';
+import { fetchAdministradores } from '@/modules/administrador/administrador.service';
+import { fetchTipoImoveis } from '@/modules/tipoImovel/tipoImovel.service';
 
 import ImobiliariaImovelCard from '@/modules/imovel/components/ImovelCard.vue';
 import ImobiliariaAdministradorCard from '@/modules/administrador/components/AdministradorCard.vue';
-import ImobiliariaEmprestimoCard from '@/modules/emprestimo/components/EmprestimoCard.vue';
+import ImobiliariaTipoImovelCard from '@/modules/tipoImovel/components/TipoImovelCard.vue';
 
 export default {
   name: 'ImobiliariaHomeTabs',
-  components: {
+  Components: {
     ImobiliariaImovelCard,
     ImobiliariaAdministradorCard,
-    ImobiliariaEmprestimoCard,
+    ImobiliariaTipoImovelCard,
   },
   data() {
     return {
-      tabActive: 'emprestimos',
+      tabActive: 'tipoimoveis',
       imovelList: [],
       administradorList: [],
-      emprestimoList: [],
+      tipoimovelList: [],
     };
   },
   mounted() {
@@ -71,12 +71,12 @@ export default {
   },
   methods: {
     fetch() {
-      if (this.tabActive === 'emprestimos') {
-        this.fetchEmprestimos();
+      if (this.tabActive === 'tipoimoveis') {
+        this.fetchTipoImoveis();
       } else if (this.tabActive === 'imoveis') {
         this.fetchImoveis();
-      } else if (this.tabActive === 'administradors') {
-        this.fetchAdministradors();
+      } else if (this.tabActive === 'administradores') {
+        this.fetchAdministradores();
       }
     },
     fetchImoveis() {
@@ -88,8 +88,8 @@ export default {
           this.imovelList = [];
         });
     },
-    fetchAdministradors() {
-      fetchAdministradors()
+    fetchAdministradores() {
+      fetchAdministradores()
         .then(data => {
           this.administradorList = data.data;
         })
@@ -97,13 +97,13 @@ export default {
           this.administradorList = [];
         });
     },
-    fetchEmprestimos() {
-      fetchEmprestimos()
+    fetchTipoImoveis() {
+      fetchTipoImoveis()
         .then(data => {
-          this.emprestimoList = data.data;
+          this.tipoimovelList = data.data;
         })
         .catch(() => {
-          this.emprestimoList = [];
+          this.tipoimovelList = [];
         });
     },
   },

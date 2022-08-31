@@ -1,9 +1,9 @@
 <template>
-  <biblioteca-container class="d-flex justify-content-center align-items-center h-100">
+  <imobiliaria-container class="d-flex justify-content-center align-items-center h-100">
     <div class="text-center h-50">
       <router-view :key="$route.path"></router-view>
     </div>
-  </biblioteca-container>
+  </imobiliaria-container>
 </template>
 
 <script>

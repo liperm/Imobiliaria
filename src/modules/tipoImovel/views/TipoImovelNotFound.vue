@@ -1,19 +1,19 @@
 <template>
-  <biblioteca-single-content-layout container-size="md">
+  <imobiliaria-single-content-layout container-size="md">
     <template #content>
       <div class="d-flex align-items--center direction--column">
-        <biblioteca-icon size="xxl" icon="question-octagon" />
-        <biblioteca-header>Empréstimo não encontrado</biblioteca-header>
-        <biblioteca-p>
+        <imobiliaria-icon size="xxl" icon="question-octagon" />
+        <imobiliaria-header>Tipo Imóvel não encontrado</imobiliaria-header>
+        <imobiliaria-p>
           Erro ao localizar o empréstimo.
-        </biblioteca-p>
+        </imobiliaria-p>
         <br>
-        <biblioteca-button theme="primary" @click="goToBasePage()">
+        <imobiliaria-button theme="primary" @click="goToBasePage()">
           Retornar para Home
-        </biblioteca-button>
+        </imobiliaria-button>
       </div>
     </template>
-  </biblioteca-single-content-layout>
+  </imobiliaria-single-content-layout>
 </template>
 
 <script>
@@ -21,7 +21,7 @@ import { goToBasePage } from '@/router/route.service';
 import ImobiliariaSingleContentLayout from '@/layouts/SingleContentLayout.vue';
 
 export default {
-  name: 'ImobiliariaEmprestimoNotFoundPage',
+  name: 'ImobiliariaTipoImovelNotFoundPage',
   components: {
     ImobiliariaSingleContentLayout,
   },

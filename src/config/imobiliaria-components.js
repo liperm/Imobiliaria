@@ -15,7 +15,7 @@ import ImobiliariaInvisible from '@/components/invisible/Invisible.vue';
 import ImobiliariaImage from '@/components/image/Image.vue';
 import ImobiliariaButton from '@/components/button/Button.vue';
 import ImobiliariaEmpty from '@/components/empty/Empty.vue';
-import ImobiliariaLink from '@/modules/imovel/components/ImovelLink.vue';
+import ImobiliariaImovelLink from '@/modules/imovel/components/ImovelLink.vue';
 
 // Containers
 import ImobiliariaRow from '@/components/container/Row.vue';

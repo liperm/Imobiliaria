@@ -1,9 +1,9 @@
-import * as emprestimoResource from '@/modules/emprestimo/emprestimo.resource';
+import * as tipoimovelResource from '@/modules/tipoImovel/tipoImovel.resource';
 
-export function fetchEmprestimos() {
+export function fetchTipoImoveis() {
   return new Promise((resolve, reject) =>
-    emprestimoResource
-      .fetchEmprestimos()
+    tipoimovelResource
+      .fetchTipoImoveis()
       .then(({ data }) => {
         resolve({
           data,
@@ -12,10 +12,10 @@ export function fetchEmprestimos() {
       .catch(err => reject(err)));
 }
 
-export function getEmprestimo(emprestimoId) {
+export function getTipoImovel(tipoimovelId) {
   return new Promise((resolve, reject) =>
-    emprestimoResource
-      .getEmprestimo(emprestimoId)
+    tipoimovelResource
+      .getTipoImovel(tipoimovelId)
       .then(({ data }) => {
         if (!data) {
           reject(new Error('not_found'));
@@ -25,18 +25,18 @@ export function getEmprestimo(emprestimoId) {
       .catch(err => reject(err)));
 }
 
-export function saveEmprestimo(emprestimo) {
+export function saveTipoImovel(tipoimovel) {
   const errors = null;
   return new Promise((resolve, reject) =>
-    (errors ? reject(errors) : getEmprestimoSaveAction(emprestimo)(emprestimo)
+    (errors ? reject(errors) : getTipoImovelSaveAction(tipoimovel)(tipoimovel)
       .then(({ data }) => resolve(data))
       .catch(err => reject(err))));
 }
 
-export function removeEmprestimo(emprestimo) {
+export function removeTipoImovel(tipoimovel) {
   return new Promise((resolve, reject) =>
-    emprestimoResource
-      .removeEmprestimo(emprestimo.id)
+    tipoimovelResource
+      .removeTipoImovel(tipoimovel.id)
       .then(() => {
         resolve();
       })
@@ -45,6 +45,6 @@ export function removeEmprestimo(emprestimo) {
       }));
 }
 
-function getEmprestimoSaveAction(emprestimo) {
-  return emprestimo.id ? emprestimoResource.updateEmprestimo : emprestimoResource.createEmprestimo;
+function getTipoImovelSaveAction(tipoimovel) {
+  return tipoimovel.id ? tipoimovelResource.updateTipoImovel : tipoimovelResource.createTipoImovel;
 }

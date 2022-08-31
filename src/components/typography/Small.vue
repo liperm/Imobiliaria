@@ -1,5 +1,5 @@
 <template>
-  <div class="biblioteca-small">
+  <div class="imobiliaria-small">
     <slot />
   </div>
 </template>

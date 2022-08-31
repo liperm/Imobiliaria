@@ -1,19 +1,19 @@
 <template>
   <el-container>
     <el-header>
-      <biblioteca-topbar />
+      <imobiliaria-topbar />
     </el-header>
     <el-main>
-      <biblioteca-container :size="containerSize">
-        <div class="biblioteca-aside-content-layout">
-          <div class="biblioteca-aside-content-layout__sidebar">
+      <imobiliaria-container :size="containerSize">
+        <div class="imobiliaria-aside-content-layout">
+          <div class="imobiliaria-aside-content-layout__sidebar">
             <slot name="aside" />
           </div>
-          <div class="biblioteca-aside-content-layout__content">
+          <div class="imobiliaria-aside-content-layout__content">
             <slot name="content" />
           </div>
         </div>
-      </biblioteca-container>
+      </imobiliaria-container>
     </el-main>
   </el-container>
 </template>
@@ -34,7 +34,7 @@ export default {
 @import '@/scss/bootstrap/container';
 @import '@/scss/bootstrap/mixins';
 
-.biblioteca-aside-content-layout {
+.imobiliaria-aside-content-layout {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -43,7 +43,7 @@ export default {
     flex-direction: column;
   }
 
-  .biblioteca-aside-content-layout__sidebar {
+  .imobiliaria-aside-content-layout__sidebar {
     top: 0;
     order: 1;
     width: 560px;
@@ -64,7 +64,7 @@ export default {
     }
   }
 
-  .biblioteca-aside-content-layout__content {
+  .imobiliaria-aside-content-layout__content {
     order: 2;
     width: 100%;
     min-height: 95vh;

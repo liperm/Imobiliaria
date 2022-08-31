@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { USUARIO_ERRORS } from '@/modules/administrador/administrador.constants';
+import { ADMINISTRADOR_ERRORS } from '@/modules/administrador/administrador.constants';
 // eslint-disable-next-line import/no-cycle
 import { goToAdministradorNotFound } from '@/modules/administrador/administrador.routes';
 import { toastError } from '@/services/toastService';
@@ -55,7 +55,7 @@ export default {
           this.imovel = null;
           if (err) {
             goToAdministradorNotFound(this.$router);
-          } else if ((err.response.data.errors === USUARIO_ERRORS[err.response.status] && err.response.status === 404)) {
+          } else if ((err.response.data.errors === ADMINISTRADOR_ERRORS[err.response.status] && err.response.status === 404)) {
             goToAdministradorNotFound(this.$router);
           } else {
             toastError('Erro ao buscar o imovel');

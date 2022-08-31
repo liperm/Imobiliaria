@@ -1,11 +1,11 @@
 <template>
   <div>
-    <biblioteca-header size="md">Oops!</biblioteca-header>
-    <biblioteca-header>Aconteceu algo de errado!</biblioteca-header>
-    <biblioteca-p>Por favor, tente recarregar a página</biblioteca-p>
-    <biblioteca-button class="btn btn-primary" @click="goToBasePage()">
+    <imobiliaria-header size="md">Oops!</imobiliaria-header>
+    <imobiliaria-header>Aconteceu algo de errado!</imobiliaria-header>
+    <imobiliaria-p>Por favor, tente recarregar a página</imobiliaria-p>
+    <imobiliaria-button class="btn btn-primary" @click="goToBasePage()">
       Retornar para a Home
-    </biblioteca-button>
+    </imobiliaria-button>
   </div>
 </template>
 

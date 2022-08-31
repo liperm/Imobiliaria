@@ -1,8 +1,8 @@
 <template>
   <div>
-    <biblioteca-form v-if="imovelEditVm.imovel" :submit="save">
+    <imobiliaria-form v-if="imovelEditVm.imovel" :submit="save">
       <div class="form-field mt-4">
-        <biblioteca-input
+        <imobiliaria-input
           v-model="imovelEditVm.imovel.titulo"
           label="Título*"
           name="titulo"
@@ -11,7 +11,7 @@
           placeholder="Título" />
       </div>
       <div class="form-field">
-        <biblioteca-textarea
+        <imobiliaria-textarea
           v-model="imovelEditVm.imovel.resumo"
           label="Resumo*"
           name="resumo"
@@ -21,23 +21,23 @@
       </div>
 
       <div class="mt-4 mb-3 d--flex justify-content-end">
-        <biblioteca-button
+        <imobiliaria-button
           class="btn btn-secondary"
           width="110"
           size="sm"
           @click="goHistoryBack()">
           Cancelar
-        </biblioteca-button>
-        <biblioteca-button
+        </imobiliaria-button>
+        <imobiliaria-button
           native-type="submit"
           class="btn btn-success ms-2"
           width="110"
           size="sm">
           <a v-if="imovelEditVm.imovel.id">Editar</a>
           <a v-else>Adicionar</a>
-        </biblioteca-button>
+        </imobiliaria-button>
       </div>
-    </biblioteca-form>
+    </imobiliaria-form>
   </div>
 </template>
 

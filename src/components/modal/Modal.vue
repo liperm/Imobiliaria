@@ -6,7 +6,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div v-if="title" class="modal-header">
-          <biblioteca-header size="sm" class="modal-title">{{ title }}</biblioteca-header>
+          <imobiliaria-header size="sm" class="modal-title">{{ title }}</imobiliaria-header>
           <button
             v-if="showCloseButton"
             class="btn-close"
@@ -21,13 +21,13 @@
         <div class="modal-footer">
           <div class="row">
             <div class="col">
-              <biblioteca-button
+              <imobiliaria-button
                 v-if="showCloseButton"
                 class="btn btn-secondary"
                 size="sm"
                 @click="close">
                 Cancelar
-              </biblioteca-button>
+              </imobiliaria-button>
             </div>
             <div v-if="$slots.footer" class="col">
               <slot name="footer" />

@@ -1,6 +1,6 @@
 @import '../variables/fonts';
 
-.biblioteca-header {
+.imobiliaria-header {
     
   $header-sizes-map: (
     sm: 22px,
@@ -15,7 +15,7 @@
     font-weight: $font-weight-strong;
 
     @each $size, $value in $header-sizes-map {
-      &.biblioteca-header--#{$size} {
+      &.imobiliaria-header--#{$size} {
         font-size: $value;
         margin-bottom: calc($value / 10);
       }

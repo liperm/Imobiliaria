@@ -14,8 +14,8 @@ export default {
   computed: {
     classes() {
       return [
-        'biblioteca-container', {
-          [`biblioteca-container--${this.size}`]: !!this.size,
+        'imobiliaria-container', {
+          [`imobiliaria-container--${this.size}`]: !!this.size,
         },
       ];
     },

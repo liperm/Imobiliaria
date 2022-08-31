@@ -4,7 +4,7 @@
       <div v-if="showLabel">
         Imovel*
       </div>
-      <biblioteca-select
+      <imobiliaria-select
         v-bind="$attrs"
         name="imovel"
         rules="required"
@@ -17,15 +17,15 @@
           :value="imovel.id">
           {{ imovel.titulo }}
         </option>
-      </biblioteca-select>
+      </imobiliaria-select>
     </div>
     <div v-else class="mb-3 mt-4">
-      <biblioteca-p color="danger">
+      <imobiliaria-p color="danger">
         *Você não possui imoveis cadastrados
-        <biblioteca-button @click="onCreate">
+        <imobiliaria-button @click="onCreate">
           Criar Imovel
-        </biblioteca-button>
-      </biblioteca-p>
+        </imobiliaria-button>
+      </imobiliaria-p>
     </div>
   </div>
 </template>

@@ -22,8 +22,8 @@ export default {
   computed: {
     getClasses() {
       return [
-        'biblioteca-header',
-        `biblioteca-header--${this.size}`,
+        'imobiliaria-header',
+        `imobiliaria-header--${this.size}`,
       ];
     },
   },

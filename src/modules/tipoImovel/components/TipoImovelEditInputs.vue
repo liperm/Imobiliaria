@@ -1,41 +1,41 @@
 <template>
   <div>
-    <biblioteca-form v-if="emprestimoEditVm.emprestimo" :submit="save">
+    <imobiliaria-form v-if="tipoimovelEditVm.tipoimovel" :submit="save">
       <div class="form-field mt-4">
-        <biblioteca-usuario-select
-          ref="usuarioSelect"
-          @on-change="onUsuarioChange" />
+        <imobiliaria-administrador-select
+          ref="administradorSelect"
+          @on-change="onAdministradorChange" />
       </div>
       <div v-for="(imovel, index) in maxImoveis" :key="index" class="form-field mt-4">
-        <biblioteca-imovel-select
+        <imobiliaria-imovel-select
           ref="imovelSelect"
           @on-change="onImovelChange($event, index)" />
-        <biblioteca-button class="btn btn-danger" @click="onRemoverImoveis(index)">
+        <imobiliaria-button class="btn btn-danger" @click="onRemoverImoveis(index)">
           Excluir Imovel
-        </biblioteca-button>
+        </imobiliaria-button>
       </div>
-      <biblioteca-button @click="onAddImoveis">
+      <imobiliaria-button @click="onAddImoveis">
         Adicionar Imoveis
-      </biblioteca-button>
+      </imobiliaria-button>
 
       <div class="mt-4 mb-3 d--flex justify-content-end">
-        <biblioteca-button
+        <imobiliaria-button
           class="btn btn-secondary"
           width="110"
           size="sm"
           @click="goHistoryBack()">
           Cancelar
-        </biblioteca-button>
-        <biblioteca-button
+        </imobiliaria-button>
+        <imobiliaria-button
           native-type="submit"
           class="btn btn-success ms-2"
           width="110"
           size="sm">
-          <a v-if="emprestimoEditVm.emprestimo.id">Editar</a>
+          <a v-if="tipoimovelEditVm.tipoimovel.id">Editar</a>
           <a v-else>Adicionar</a>
-        </biblioteca-button>
+        </imobiliaria-button>
       </div>
-    </biblioteca-form>
+    </imobiliaria-form>
   </div>
 </template>
 
@@ -44,15 +44,15 @@ import { goHistoryBack } from '@/router/route.service';
 import { toastError } from '@/services/toastService';
 
 import ImobiliariaImovelSelect from '@/modules/imovel/components/ImovelSelect.vue';
-import ImobiliariaUsuarioSelect from '@/modules/usuario/components/UsuarioSelect.vue';
+import ImobiliariaAdministradorSelect from '@/modules/administrador/components/AdministradorSelect.vue';
 
 export default {
-  name: 'ImobiliariaEmprestimoEdit',
-  components: {
+  name: 'ImobiliariaTipoImovelEdit',
+  Components: {
     ImobiliariaImovelSelect,
-    ImobiliariaUsuarioSelect,
+    ImobiliariaAdministradorSelect,
   },
-  inject: ['emprestimoEditVm'],
+  inject: ['tipoimovelEditVm'],
   data() {
     return {
       value: 1,
@@ -69,7 +69,7 @@ export default {
       this.$emit('save');
     },
     onImovelChange(imovelId, index) {
-      this.emprestimoEditVm.emprestimo.imoveis.forEach(imovel => {
+      this.tipoimovelEditVm.tipoimovel.imoveis.forEach(imovel => {
         if (imovel.id === imovelId.id) {
           this.imovelErro = true;
           this.onRemoverImoveis(index);
@@ -77,12 +77,12 @@ export default {
         }
       });
       if (!this.imovelErro) {
-        this.emprestimoEditVm.emprestimo.imoveis.push(imovelId);
+        this.tipoimovelEditVm.tipoimovel.imoveis.push(imovelId);
       }
       this.imovelErro = false;
     },
-    onUsuarioChange(usuario) {
-      this.emprestimoEditVm.emprestimo.usuario = usuario;
+    onAdministradorChange(administrador) {
+      this.tipoimovelEditVm.tipoimovel.administrador = administrador;
     },
     onAddImoveis() {
       this.value += 1;
@@ -90,7 +90,7 @@ export default {
     },
     onRemoverImoveis(index) {
       this.maxImoveis.splice(index, 1);
-      this.emprestimoEditVm.emprestimo.imoveis.splice(index, 1);
+      this.tipoimovelEditVm.tipoimovel.imoveis.splice(index, 1);
     },
   },
 };
